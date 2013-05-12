@@ -18,12 +18,12 @@ Very simple.
 
 ### Credits~
 
-James Campos
-Nicolas Stepien
-And other contributors to 4chan X, who lay the foundations for things
+James Campos,
+Nicolas Stepien,
+and other contributors to 4chan X, who lay the foundations for things
 like the backlinks, the gif animator, and the auto updater (when it's in).
 
-Author of Rorichan X
+Author of Rorichan X.
 I still don't know who this is.
 Rorichan X is modified copy of an old version of 4chan X that runs
 on brchan, rorichan, xchan and ligadosaterra.
@@ -33,11 +33,11 @@ I found it on pastebin, uploaded by a guest, and the only credit was
 to James Campos. 
 Please make yourself known :3
 
-Jmyeom
+Jmyeom.
 Some neat portability fixes for the backlinks, and I'm sure I'll
 coerce more out of him before we're done here c:
 
-Madchan's Admin
+Madchan's Admin.
 I still don't know his name, but he wrote the lines that add "Replies:"
 before backlinks. We had a thread flailing about like retards trying to
 do that without modifying the templates for days. It's not even funny.
