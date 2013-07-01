@@ -41,7 +41,12 @@
 		function follow(evt) {
 		if (d.getElementById) {var obj = d.getElementById(divName).style; obj.visibility = 'visible'; obj.position = 'absolute';
 		obj.left = (parseInt(mouseX(evt))+offX) + 'px';
-		obj.top = (parseInt(mouseY(evt))+offY) + 'px';}}
+		obj.top = (parseInt(mouseY(evt))+offY) + 'px';
+		var mousewindow = parseFloat(parseInt(mouseY(evt))) - parseFloat(d.documentElement.scrollTop) - parseFloat(150);
+		var obwindow = parseFloat(window.innerHeight) - parseFloat(d.getElementById(divName).height);
+		var obwsi = parseFloat(d.documentElement.scrollTop) + parseFloat(window.innerHeight) - parseFloat(d.getElementById(divName).height) - parseFloat(5);
+		if (mousewindow > obwindow) {obj.top = obwsi + 'px';}
+		if (parseInt(mouseY(evt)) < parseFloat(d.documentElement.scrollTop) + parseFloat(150)) {obj.top = parseInt(d.documentElement.scrollTop) + parseInt(5) + 'px';}}}
 		d.onmousemove = follow;}}
 	}
 	
@@ -68,10 +73,10 @@
 		var postrefl = postid.querySelectorAll('span.reflink')[0];					
 		if (postrefl.innerHTML.indexOf(reply) == -1){	
 		if (shwr == 1){
-		if (postrefl.innerHTML.indexOf('<resps>Replies: </resps>') == -1){
-		postrefl.innerHTML += '<resps>Replies: </resps>'; }} 		
+		if (postrefl.innerHTML.indexOf('<resps>Replies:</resps>') == -1){
+		postrefl.innerHTML += '<resps>Replies:</resps>'; }} 		
 		var e = d.createElement('a');
-		e.innerHTML='<u>>>' + reply + '</u>';
+		e.innerHTML='&nbsp;<u>>>' + reply + '</u>';
 		e.setAttribute('href','/' + board + '/res/' + tr + '.html#' + reply);
 		e.setAttribute('class','ref|' + board + '|' + tr + '|' + reply);
 		e.setAttribute('onclick','return highlight(\'' + reply + '\', true);');
@@ -82,10 +87,10 @@
 		var tpostrefl = tpostid.querySelectorAll('span.reflink')[0];
 		if (tpostrefl.innerHTML.indexOf(reply) == -1){	
 		if (shwr == 1){
-		if (tpostrefl.innerHTML.indexOf('<resps>Replies: </resps>') == -1){
-		tpostrefl.innerHTML += '<resps>Replies: </resps>'; }} 		
+		if (tpostrefl.innerHTML.indexOf('<resps>Replies:</resps>') == -1){
+		tpostrefl.innerHTML += '<resps>Replies:</resps>'; }} 		
 		var te = d.createElement('a');
-		te.innerHTML='<u>>>' + reply + '</u>';
+		te.innerHTML='&nbsp;<u>>>' + reply + '</u>';
 		te.setAttribute('href','/' + board + '/res/' + tr + '.html#' + reply);
 		te.setAttribute('class','ref|' + board + '|' + tr + '|' + reply);
 		te.setAttribute('onclick','return highlight(\'' + reply + '\', true);');
