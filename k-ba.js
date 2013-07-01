@@ -13,19 +13,19 @@
 // - Business		
 	if (ihov == 1){
 		var aElm = d.getElementsByTagName('a');
-		for (i=0; i<aElm.length; i++) {
-		if (aElm[i].href.match(/\.(jpg|jpeg|gif|png)$/)) {
 		var oImg = d.createElement('img');
 		oImg.setAttribute('src','');
-		oImg.setAttribute('id','hovx' + i);
+		oImg.setAttribute('id','hovx');
 		oImg.style.maxHeight = ihovH;
 		oImg.style.maxWidth = ihovW;
 		db.appendChild(oImg,db.firstChild);
+		for (i=0; i<aElm.length; i++) {
+		if (aElm[i].href.match(/\.(jpg|jpeg|gif|png)$/)) {
 		aElm[i].onmouseover = function() { oImg.setAttribute('src', this.href); }
 		aElm[i].onmouseout = function() { oImg.setAttribute('src',''); }
 		function killLnk() { oImg.setAttribute('src',''); }
 		aElm[i].addEventListener('click',killLnk, false);
-		var divName = 'hovx' + i;
+		var divName = 'hovx';
 		var offX = 10;
 		var offY = -150;
 		function mouseX(evt) {
@@ -46,7 +46,7 @@
 		var obwindow = parseFloat(window.innerHeight) - parseFloat(d.getElementById(divName).height);
 		var obwsi = parseFloat(d.documentElement.scrollTop) + parseFloat(window.innerHeight) - parseFloat(d.getElementById(divName).height) - parseFloat(5);
 		if (mousewindow > obwindow) {obj.top = obwsi + 'px';}
-		if (parseInt(mouseY(evt)) < parseFloat(d.documentElement.scrollTop) + parseFloat(150)) {obj.top = parseInt(d.documentElement.scrollTop) + parseInt(5) + 'px';}}}
+		if (parseInt(mouseY(evt)) < parseFloat(d.documentElement.scrollTop) + parseFloat(150)) {obj.top = parseFloat(d.documentElement.scrollTop) + parseFloat(5) + 'px';}}}
 		d.onmousemove = follow;}}
 	}
 	
