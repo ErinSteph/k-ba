@@ -3,12 +3,17 @@
 	var ihov = 1; //Image Hovers. 1 = Show full image on thumbnail hover, 0 = off.
 		var ihovH = "70%"; //Max Height of Image Hovers.
 		var ihovW = "70%"; //Max Width of Image Hovers.
+		var offX = 10; //Horizontal position of image hovers relative to the mouse. i.e. 10 means the image appears 10 pixels to the right of the pointer.
+		var offY = 150; //Vertical position of image hovers relative to the mouse. i.e. 150 means the top of the image appears 150 pixels above the pointer.
+		var thmnly = 0; //Whether to make image hovers on thumbnails only, or linked images too. 1 = thumbnails only, 0 = thumbnails, file titles, and posted links.
 	var bckl = 1; //Backlinks. 1 = Add links to a post's replies in it's header, 0 = off.
-		var shwr = 1; //Show "Replies: ". 1 = Add "Replies: " before a row of backlinks, 0 = off.
+		var shwr = 1; //Label replies. 1 = Add "Replies: " before a row of backlinks, 0 = off.
 	var agif = 1; //Animate .GIFs. 1 = Automatically animate .GIF thumbnails, 0 = off.
 
 // - Some globals, don't change
-	var d = document;var db = document.body;
+	var d=document;
+	var db=document.body;
+	var offY=-offY;
 	
 // - Business		
 	if (ihov == 1){
@@ -21,13 +26,12 @@
 		db.appendChild(oImg,db.firstChild);
 		for (i=0; i<aElm.length; i++) {
 		if (aElm[i].href.match(/\.(jpg|jpeg|gif|png)$/)) {
+		if (thmnly == 1 && aElm[i].innerHTML.indexOf("\/thumb\/") != -1 || thmnly != 1){
 		aElm[i].onmouseover = function() { oImg.setAttribute('src', this.href); }
 		aElm[i].onmouseout = function() { oImg.setAttribute('src',''); }
 		function killLnk() { oImg.setAttribute('src',''); }
 		aElm[i].addEventListener('click',killLnk, false);
 		var divName = 'hovx';
-		var offX = 10;
-		var offY = -150;
 		function mouseX(evt) {
 		if (!evt) evt = window.event; 
 		if (evt.pageX) return evt.pageX; 
@@ -47,7 +51,7 @@
 		var obwsi = parseFloat(d.documentElement.scrollTop) + parseFloat(window.innerHeight) - parseFloat(d.getElementById(divName).height) - parseFloat(5);
 		if (mousewindow > obwindow) {obj.top = obwsi + 'px';}
 		if (parseInt(mouseY(evt)) < parseFloat(d.documentElement.scrollTop) + parseFloat(150)) {obj.top = parseFloat(d.documentElement.scrollTop) + parseFloat(5) + 'px';}}}
-		d.onmousemove = follow;}}
+		d.onmousemove = follow;}}}
 	}
 	
 	if (bckl == 1){
